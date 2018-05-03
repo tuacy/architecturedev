@@ -1,1 +1,1 @@
-include ':mvc:mvcapp', ':mvp:mvpapp', ':mvvm:mvvmapp'
+include ':mvc:mvcapp', ':mvp:mvpapp', ':mvvm:mvvmapp', ':network', ':protocols'
