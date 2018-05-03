@@ -12,6 +12,6 @@ public interface IPresenter<T extends IBaseView> {
 	/**
 	 * presenter和对应的view解绑
 	 */
-	void detachView(T t);
+	void detachView();
 
 }

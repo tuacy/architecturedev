@@ -2,26 +2,31 @@ package com.tuacy.mvpapp.mvp.presenter;
 
 import com.tuacy.mvpapp.mvp.view.IBaseView;
 
+import java.lang.ref.WeakReference;
+
 public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
 
-	private V mView;
+	private WeakReference<V> mViewRef;
 
 	@Override
 	public void attachView(V v) {
-		mView = v;
+		mViewRef = new WeakReference<>(v);
 	}
 
 	@Override
-	public void detachView(V v) {
-		mView = null;
+	public void detachView() {
+		if (mViewRef != null) {
+			mViewRef.clear();
+			mViewRef = null;
+		}
 	}
 
-	public boolean isAttachView() {
-		return mView != null;
+	protected boolean isAttachView() {
+		return mViewRef != null && mViewRef.get() != null;
 	}
 
 	public V getView() {
-		return mView;
+		return mViewRef.get();
 	}
 
 	/**
