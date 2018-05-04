@@ -25,11 +25,11 @@ public class AirNowResponse {
 		 * update : {"loc":"2017-11-07 22:46","utc":"2017-11-07 14:46"}
 		 */
 
-		private AirNowCityBean air_now_city;
-		private BasicBean               basic;
-		private String                  status;
-		private UpdateBean              update;
-		private List<AirNowStationBean> air_now_station;
+		private AirNowCityBean   air_now_city;
+		private BasicBean        basic;
+		private String           status;
+		private UpdateBean       update;
+		private List<AirNowItem> air_now_station;
 
 		public AirNowCityBean getAir_now_city() {
 			return air_now_city;
@@ -63,11 +63,11 @@ public class AirNowResponse {
 			this.update = update;
 		}
 
-		public List<AirNowStationBean> getAir_now_station() {
+		public List<AirNowItem> getAir_now_station() {
 			return air_now_station;
 		}
 
-		public void setAir_now_station(List<AirNowStationBean> air_now_station) {
+		public void setAir_now_station(List<AirNowItem> air_now_station) {
 			this.air_now_station = air_now_station;
 		}
 
@@ -292,7 +292,7 @@ public class AirNowResponse {
 			}
 		}
 
-		public static class AirNowStationBean {
+		public static class AirNowItem {
 
 			/**
 			 * air_sta : 万寿西宫

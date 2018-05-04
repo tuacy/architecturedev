@@ -23,10 +23,10 @@ public class WeatherNowResponse {
 		 * now : {"cloud":"49","cond_code":"104","cond_txt":"阴","fl":"22","hum":"48","pcpn":"0.0","pres":"1020","tmp":"23","vis":"20","wind_deg":"21","wind_dir":"东北风","wind_sc":"2","wind_spd":"8"}
 		 */
 
-		private BasicBean  basic;
-		private UpdateBean update;
-		private String     status;
-		private NowBean    now;
+		private BasicBean      basic;
+		private UpdateBean     update;
+		private String         status;
+		private WeatherNowInfo now;
 
 		public BasicBean getBasic() {
 			return basic;
@@ -52,11 +52,11 @@ public class WeatherNowResponse {
 			this.status = status;
 		}
 
-		public NowBean getNow() {
+		public WeatherNowInfo getNow() {
 			return now;
 		}
 
-		public void setNow(NowBean now) {
+		public void setNow(WeatherNowInfo now) {
 			this.now = now;
 		}
 
@@ -174,7 +174,7 @@ public class WeatherNowResponse {
 			}
 		}
 
-		public static class NowBean {
+		public static class WeatherNowInfo {
 
 			/**
 			 * cloud : 49
@@ -308,6 +308,14 @@ public class WeatherNowResponse {
 
 			public void setWind_spd(String wind_spd) {
 				this.wind_spd = wind_spd;
+			}
+
+			@Override
+			public String toString() {
+				return "WeatherNowInfo{" + "cloud='" + cloud + '\'' + ", cond_code='" + cond_code + '\'' + ", cond_txt='" + cond_txt +
+					   '\'' + ", fl='" + fl + '\'' + ", hum='" + hum + '\'' + ", pcpn='" + pcpn + '\'' + ", pres='" + pres + '\'' +
+					   ", tmp='" + tmp + '\'' + ", vis='" + vis + '\'' + ", wind_deg='" + wind_deg + '\'' + ", wind_dir='" + wind_dir +
+					   '\'' + ", wind_sc='" + wind_sc + '\'' + ", wind_spd='" + wind_spd + '\'' + '}';
 			}
 		}
 	}

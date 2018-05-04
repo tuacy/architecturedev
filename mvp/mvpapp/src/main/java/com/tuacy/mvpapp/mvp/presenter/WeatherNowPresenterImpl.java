@@ -24,28 +24,32 @@ public class WeatherNowPresenterImpl extends BasePresenter<WeatherNowView> imple
 	@Override
 	public void requestWeatherNow(String location) {
 		mModel.getWeatherNow(mContext, "https://free-api.heweather.com/s6/", "ab91959227504934a70f45d912460ea8", location,
-						   new ProtocolsBaseCallback<WeatherNowResponse>() {
-							   @Override
-							   public void onProtocolStart(Object tag) {
-								   if (isAttachView()) {
-									   getView().getWeatherNowInfoStart();
-								   }
-							   }
+							 new ProtocolsBaseCallback<WeatherNowResponse>() {
+								 @Override
+								 public void onProtocolStart(Object tag) {
+									 if (isAttachView()) {
+										 getView().getWeatherNowInfoStart();
+									 }
+								 }
 
-							   @Override
-							   public void onProtocolSuccess(Object tag, WeatherNowResponse bean) {
-								   if (isAttachView()) {
-									   getView().getWeatherNowInfoSuccess();
-								   }
-							   }
+								 @Override
+								 public void onProtocolSuccess(Object tag, WeatherNowResponse bean) {
+									 if (isAttachView()) {
+										 if (bean != null && bean.getHeWeather6() != null && !bean.getHeWeather6().isEmpty()) {
+											 getView().getWeatherNowInfoSuccess(bean.getHeWeather6().get(0).getNow());
+										 } else {
+											 getView().getWeatherNowInfoSuccess(null);
+										 }
+									 }
+								 }
 
-							   @Override
-							   public void onProtocolError(Object tag, ProtocolsException exception) {
-								   if (isAttachView()) {
-									   getView().getWeatherNowInfoError();
-								   }
-							   }
-						   });
+								 @Override
+								 public void onProtocolError(Object tag, ProtocolsException exception) {
+									 if (isAttachView()) {
+										 getView().getWeatherNowInfoError();
+									 }
+								 }
+							 });
 	}
 
 }

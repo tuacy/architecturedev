@@ -23,10 +23,10 @@ public class LifeStyleResponse {
 		 * update : {"loc":"2017-10-26 23:09","utc":"2017-10-26 15:09"}
 		 */
 
-		private BasicBean basic;
+		private BasicBean           basic;
 		private String              status;
 		private UpdateBean          update;
-		private List<LifestyleBean> lifestyle;
+		private List<LifestyleItem> lifestyle;
 
 		public BasicBean getBasic() {
 			return basic;
@@ -52,11 +52,11 @@ public class LifeStyleResponse {
 			this.update = update;
 		}
 
-		public List<LifestyleBean> getLifestyle() {
+		public List<LifestyleItem> getLifestyle() {
 			return lifestyle;
 		}
 
-		public void setLifestyle(List<LifestyleBean> lifestyle) {
+		public void setLifestyle(List<LifestyleItem> lifestyle) {
 			this.lifestyle = lifestyle;
 		}
 
@@ -174,7 +174,7 @@ public class LifeStyleResponse {
 			}
 		}
 
-		public static class LifestyleBean {
+		public static class LifestyleItem {
 
 			/**
 			 * brf : 舒适

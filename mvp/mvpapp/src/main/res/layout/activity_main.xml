@@ -25,4 +25,11 @@
         android:layout_height="wrap_content"
         android:text="同时获取城市列表和实时天气信息!" />
 
+    <TextView
+        android:id="@+id/text_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:padding="8dp" />
+
 </LinearLayout>

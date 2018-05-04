@@ -33,7 +33,11 @@ public class CityPresenterImpl extends BasePresenter<CityView> implements CityPr
 							   @Override
 							   public void onProtocolSuccess(Object tag, CityResponse bean) {
 								   if (isAttachView()) {
-									   getView().getCityListSuccess(bean);
+									   if (bean != null && bean.getHeWeather6() != null && !bean.getHeWeather6().isEmpty()) {
+										   getView().getCityListSuccess(bean.getHeWeather6().get(0).getBasic());
+									   } else {
+										   getView().getCityListSuccess(null);
+									   }
 								   }
 							   }
 

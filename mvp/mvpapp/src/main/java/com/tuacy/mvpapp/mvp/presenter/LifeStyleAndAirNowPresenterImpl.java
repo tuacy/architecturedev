@@ -8,6 +8,10 @@ import com.tuacy.mvpapp.mvp.view.LifeStyleAndAirNowView;
 import com.tuacy.network.callback.ProtocolsBaseCallback;
 import com.tuacy.network.exception.ProtocolsException;
 import com.tuacy.protocols.bean.LifeStyleAndAirNowBean;
+import com.tuacy.protocols.bean.response.AirNowResponse;
+import com.tuacy.protocols.bean.response.LifeStyleResponse;
+
+import java.util.List;
 
 public class LifeStyleAndAirNowPresenterImpl extends BasePresenter<LifeStyleAndAirNowView> implements LifeStyleAndAirNowPresenter {
 
@@ -33,7 +37,19 @@ public class LifeStyleAndAirNowPresenterImpl extends BasePresenter<LifeStyleAndA
 										 @Override
 										 public void onProtocolSuccess(Object tag, LifeStyleAndAirNowBean bean) {
 											 if (isAttachView()) {
-												 getView().getLifeStyleAndAirNowViewSuccess(bean);
+												 List<LifeStyleResponse.HeWeather6Bean.LifestyleItem> lifestyleItemList = null;
+												 List<AirNowResponse.HeWeather6Bean.AirNowItem> airNowItemList = null;
+												 if (bean != null && bean.getLifeStyleResponse() != null &&
+													 bean.getLifeStyleResponse().getHeWeather6() != null &&
+													 !bean.getLifeStyleResponse().getHeWeather6().isEmpty()) {
+													 lifestyleItemList = bean.getLifeStyleResponse().getHeWeather6().get(0).getLifestyle();
+												 }
+												 if (bean != null && bean.getAirNowResponse() != null &&
+													 bean.getAirNowResponse().getHeWeather6() != null &&
+													 !bean.getAirNowResponse().getHeWeather6().isEmpty()) {
+													 airNowItemList = bean.getAirNowResponse().getHeWeather6().get(0).getAir_now_station();
+												 }
+												 getView().getLifeStyleAndAirNowViewSuccess(lifestyleItemList, airNowItemList);
 											 }
 										 }
 
